@@ -1,32 +1,68 @@
+:root {
+  --accent-light: #0a3323;
+  --accent-dark: #f7f4d5;
+  --bg: transparent;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent: var(--accent-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: var(--accent-dark);
+  }
+}
+
 body {
   margin: 0;
-  background: transparent;
+  background: var(--bg);
   font-family: system-ui, sans-serif;
+  color: var(--accent);
 }
 
 .widget {
-  width: 260px;
-  padding: 12px;
+  width: 280px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.item span {
-  font-size: 12px;
+.clock {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 500;
   opacity: 0.7;
+  margin: 6px 0 4px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 50px 1fr 42px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
 }
 
 .bar {
-  height: 16px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 8px;
+  height: 10px;
+  background: rgba(0,0,0,0.1);
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
 .bar div {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #6ae3ff, #7cffb2);
-  transition: width 0.5s ease;
+  background: var(--accent);
+  transition: width 0.4s ease;
 }
