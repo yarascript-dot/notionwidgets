@@ -1,7 +1,7 @@
 :root {
   --accent-light: #0a3323;
   --accent-dark: #f7f4d5;
-  --bg: transparent;
+  --text: #666;
   --radius: 10px;
 }
 
@@ -14,14 +14,15 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --accent: var(--accent-dark);
+    --text: #aaa;
   }
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: transparent;
   font-family: system-ui, sans-serif;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .widget {
@@ -35,19 +36,19 @@ body {
 .clock {
   font-size: 28px;
   font-weight: 600;
-  letter-spacing: 1px;
+  color: var(--accent); /* ← ЧАС КОЛЬОРОВИЙ */
 }
 
 h2 {
   font-size: 14px;
   font-weight: 500;
   opacity: 0.7;
-  margin: 6px 0 4px;
+  margin: 4px 0 6px;
 }
 
 .row {
   display: grid;
-  grid-template-columns: 50px 1fr 42px;
+  grid-template-columns: 52px 1fr 42px;
   align-items: center;
   gap: 8px;
   font-size: 12px;
@@ -63,6 +64,11 @@ h2 {
 .bar div {
   height: 100%;
   width: 0%;
-  background: var(--accent);
+  background: var(--accent); /* ← ТІЛЬКИ ЗАЛИВКА */
   transition: width 0.4s ease;
+}
+
+.row span:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
