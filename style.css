@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  background: transparent;
+  font-family: system-ui, sans-serif;
+}
+
+.widget {
+  width: 260px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.bar {
+  height: 16px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar div {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #6ae3ff, #7cffb2);
+  transition: width 0.5s ease;
+}
