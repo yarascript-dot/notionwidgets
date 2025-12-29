@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Water Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <div class="widget">
-    <div class="glass">
-      <div id="water-fill"></div>
-    </div>
+    <div class="title">Water today</div>
 
     <div class="amount">
       <span id="current">0</span> / 2000 мл
     </div>
 
-   <div class="controls">
-  <div class="row-control">
-    <span>100 мл</span>
-    <button data-step="-100">−</button>
-    <button data-step="100">+</button>
-  </div>
+    <div class="glass">
+      <div class="fill" id="fill"></div>
+    </div>
 
-  <div class="row-control">
-    <span>250 мл</span>
-    <button data-step="-250">−</button>
-    <button data-step="250">+</button>
-  </div>
+    <div class="controls">
+      <div class="row">
+        <button data-step="-100">−</button>
+        <span>100 мл</span>
+        <button data-step="100">+</button>
+      </div>
 
-  <div class="row-control">
-    <span>500 мл</span>
-    <button data-step="-500">−</button>
-    <button data-step="500">+</button>
-  </div>
-</div>
+      <div class="row">
+        <button data-step="-250">−</button>
+        <span>250 мл</span>
+        <button data-step="250">+</button>
+      </div>
 
+      <div class="row">
+        <button data-step="-500">−</button>
+        <span>500 мл</span>
+        <button data-step="500">+</button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
