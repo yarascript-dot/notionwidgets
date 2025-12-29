@@ -1,57 +1,24 @@
-const STEP = 200;
-const MAX = 2000;
+const DAILY_GOAL = 2000;
+let amount = 0;
 
-const fill = document.getElementById("water-fill");
-const currentText = document.getElementById("current");
-
-function todayKey() {
-  const d = new Date();
-  return d.toISOString().split("T")[0];
-}
-
-function load() {
-  const savedDate = localStorage.getItem("water-date");
-  const today = todayKey();
-
-  if (savedDate !== today) {
-    localStorage.setItem("water-date", today);
-    localStorage.setItem("water-amount", 0);
-  }
-
-  return Number(localStorage.getItem("water-amount")) || 0;
-}
-
-let amount = load();
+const currentEl = document.getElementById("current");
+const fillEl = document.getElementById("fill");
 
 function render() {
-  amount = Math.max(0, amount);
+  if (amount < 0) amount = 0;
 
-  const visualAmount = Math.min(amount, MAX);
-  const percent = visualAmount / MAX;
+  currentEl.textContent = amount;
 
-  fill.style.height = percent * 100 + "%";
-  currentText.textContent = amount;
-
-  localStorage.setItem("water-amount", amount);
+  const percent = Math.min(amount / DAILY_GOAL, 1);
+  fillEl.style.height = `${percent * 100}%`;
 }
 
-
-document.getElementById("plus").onclick = () => {
-  amount += STEP;
-  render();
-};
-
-document.getElementById("minus").onclick = () => {
-  amount -= STEP;
-  render();
-};
-
-document.querySelectorAll("[data-step]").forEach(btn => {
-  btn.onclick = () => {
-    const step = Number(btn.dataset.step);
+document.querySelectorAll("[data-step]").forEach(button => {
+  button.addEventListener("click", () => {
+    const step = Number(button.dataset.step);
     amount += step;
     render();
-  };
+  });
 });
 
 render();
