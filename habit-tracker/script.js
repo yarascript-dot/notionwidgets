@@ -1,57 +1,51 @@
+import express from "express";
+import fetch from "node-fetch";
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Встав сюди свій ключ інтеграції і ID бази
 const NOTION_API_KEY = "ntn_I90760609095CGkTYYdIHbvfTDfOkX03ErTzl3wZh6dgKZ";
 const DATABASE_ID = "Habit-Tracker-2c021cf9b2ed81faaac0cd24bd7deaa0";
-const COLUMN_NAME = "Widgets"; // Назва колонки з відсотком виконання
+const COLUMN_NAME = "Widgets"; // колонка типу Formula
+const DATE_COLUMN = "Date";     // колонка з датою
 
-async function fetchNotionData() {
+app.get("/habit-percent", async (req, res) => {
     const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
-    const response = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${NOTION_API_KEY}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            filter: {
-                property: "Date", // колонка з датою
-                date: {
-                    equals: today
+    try {
+        const response = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${NOTION_API_KEY}`,
+                "Notion-Version": "2022-06-28",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                filter: {
+                    property: DATE_COLUMN,
+                    date: { equals: today }
                 }
-            }
-        })
-    });
+            })
+        });
 
-    const data = await response.json();
-    if (data.results.length === 0) return 0;
+        const data = await response.json();
 
-    const page = data.results[0];
-const percent = page.properties[COLUMN_NAME].formula.number || 0;
+        if (!data.results || data.results.length === 0) {
+            return res.json({ percent: 0 });
+        }
 
-    return percent;
-}
+        const page = data.results[0];
 
-function updateProgress(percent) {
-    const span = document.getElementById("percent");
-    span.textContent = `${percent}%`;
+        // Для формули звертаємося всередину formula.number
+        const percent = page.properties[COLUMN_NAME].formula?.number || 0;
 
-    let angle;
-    if (percent >= 100) angle = 360;
-    else if (percent >= 80) angle = 288;
-    else if (percent >= 60) angle = 216;
-    else if (percent >= 40) angle = 144;
-    else if (percent >= 20) angle = 72;
-    else angle = 0;
+        res.json({ percent });
 
-    document.querySelector(".progress-circle").style.background = `conic-gradient(#4caf50 0deg, #4caf50 ${angle}deg, #ddd ${angle}deg, #ddd 360deg)`;
-}
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ percent: 0 });
+    }
+});
 
-async function refreshWidget() {
-    const percent = await fetchNotionData();
-    updateProgress(percent);
-}
-
-// Початкове завантаження
-refreshWidget();
-
-// Оновлення щохвилини
-setInterval(refreshWidget, 60000);
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
