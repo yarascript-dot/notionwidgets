@@ -24,14 +24,17 @@ function load() {
 let amount = load();
 
 function render() {
-  amount = Math.max(0, Math.min(amount, MAX));
-  const percent = amount / MAX;
+  amount = Math.max(0, amount);
+
+  const visualAmount = Math.min(amount, MAX);
+  const percent = visualAmount / MAX;
 
   fill.style.height = percent * 100 + "%";
   currentText.textContent = amount;
 
   localStorage.setItem("water-amount", amount);
 }
+
 
 document.getElementById("plus").onclick = () => {
   amount += STEP;
