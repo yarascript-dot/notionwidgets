@@ -46,4 +46,12 @@ document.getElementById("minus").onclick = () => {
   render();
 };
 
+document.querySelectorAll("[data-step]").forEach(btn => {
+  btn.onclick = () => {
+    const step = Number(btn.dataset.step);
+    amount += step;
+    render();
+  };
+});
+
 render();
