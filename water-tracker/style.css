@@ -55,20 +55,35 @@ body {
 
 /* КНОПКИ */
 .controls {
+  width: 100%;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 6px;
 }
 
-button {
-  padding: 6px 10px;
-  border-radius: 999px;
+.row-control {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.row-control span {
+  opacity: 0.8;
+}
+
+.row-control button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   border: 1px solid var(--accent);
   background: transparent;
   color: var(--accent);
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.96);
+.row-control button:active {
+  transform: scale(0.95);
 }
