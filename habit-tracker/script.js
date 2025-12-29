@@ -14,7 +14,7 @@ async function fetchNotionData() {
         },
         body: JSON.stringify({
             filter: {
-                property: "Дата", // колонка з датою
+                property: "Date", // колонка з датою
                 date: {
                     equals: today
                 }
@@ -26,7 +26,7 @@ async function fetchNotionData() {
     if (data.results.length === 0) return 0;
 
     const page = data.results[0];
-    const percent = page.properties[COLUMN_NAME].number || 0;
+const percent = page.properties[COLUMN_NAME].formula.number || 0;
 
     return percent;
 }
