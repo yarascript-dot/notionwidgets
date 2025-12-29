@@ -76,9 +76,9 @@ async function updateWidget() {
   widget.textContent = style.text + " " + progress + "%";
 }
 
-// оновлюємо віджет одразу і кожні 5 хв
+// оновлюємо віджет одразу і кожну хвилину
 updateWidget();
-setInterval(updateWidget, 5 * 60 * 1000);
+setInterval(updateWidget, 1 * 60 * 1000);
 </script>
 </body>
 </html>
