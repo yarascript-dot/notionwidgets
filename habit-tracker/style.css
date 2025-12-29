@@ -25,10 +25,4 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-}
-
-.progress-circle span {
-    position: absolute;
-    font-size: 20px;
-    font-weight: bold;
-}
+    transition: background 1s ease; /* плавна анімація */
