@@ -9,7 +9,6 @@ async function fetchNotionData() {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${NOTION_API_KEY}`,
-            "Notion-Version": "2022-06-28",
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
