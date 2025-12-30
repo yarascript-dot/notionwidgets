@@ -29,7 +29,11 @@ html, body {
 /* прогрес */
 .progress-container {
   width: 100%;
+
+  /* безпечна зона для повзунка */
+  padding: clamp(10px, 3vw, 16px) 0;
 }
+
 
 .progress-bar {
   position: relative;
