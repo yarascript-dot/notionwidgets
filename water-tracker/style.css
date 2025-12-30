@@ -17,7 +17,7 @@ body {
 .widget {
   width: 100%;
   max-width: 320px;
-  min-width: 200px;
+  min-width: 100px;
   padding: clamp(12px, 3vw, 16px);
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.15);
