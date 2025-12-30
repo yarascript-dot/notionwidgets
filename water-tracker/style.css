@@ -59,17 +59,17 @@ body {
 
 /* === СКЛЯНКА === */
 .glass {
-  width: 100%;
-  max-width: 280px;
-
+  width: 50%;           /* трохи менше від ширини віджету */
+  max-width: 200px;     /* обмежуємо склянку на великих екранах */
   aspect-ratio: 3 / 4;
-  min-height: 30px; /* Зменшено ще вдвічі */
-
+  min-height: 30px;     /* маленька мобільна висота */
+  max-height: 150px;    /* обмежуємо максимальну висоту */
   border-radius: 12px;
   border: 1px solid var(--accent);
   position: relative;
   overflow: hidden;
 }
+
 
 .fill {
   position: absolute;
