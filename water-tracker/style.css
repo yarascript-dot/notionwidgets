@@ -27,9 +27,9 @@ body {
 .widget {
   width: 100%;
   max-width: 360px;
-  min-width: 55px; /* Зменшено ще вдвічі */
+  min-width: 40px; /* зменшено до 40px */
 
-  padding: clamp(8px, 2.5vw, 12px);
+  padding: clamp(6px, 2.5vw, 12px);
 
   display: flex;
   flex-direction: column;
@@ -59,17 +59,17 @@ body {
 
 /* === СКЛЯНКА === */
 .glass {
-  width: 50%;           /* трохи менше від ширини віджету */
-  max-width: 200px;     /* обмежуємо склянку на великих екранах */
+  width: 70%;           /* трохи менше від ширини віджету */
+  max-width: 200px;     /* обмеження максимальної ширини */
   aspect-ratio: 3 / 4;
-  min-height: 30px;     /* маленька мобільна висота */
-  max-height: 150px;    /* обмежуємо максимальну висоту */
+  min-height: 30px;     /* мінімальна висота */
+  max-height: 150px;    /* максимальна висота */
+
   border-radius: 12px;
   border: 1px solid var(--accent);
   position: relative;
   overflow: hidden;
 }
-
 
 .fill {
   position: absolute;
@@ -77,52 +77,3 @@ body {
   left: 0;
 
   width: 100%;
-  height: 0%;
-
-  background: var(--accent);
-  transition: height 0.3s ease;
-}
-
-/* === КНОПКИ === */
-.controls {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(2px, 1vw, 4px);
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(4px, 1.5vw, 6px);
-
-  font-size: clamp(8px, 2.5vw, 10px);
-}
-
-.row span {
-  min-width: 30px;
-  text-align: center;
-  opacity: 0.85;
-}
-
-button {
-  width: clamp(18px, 5vw, 24px);
-  height: clamp(18px, 5vw, 24px);
-
-  border-radius: 50%;
-  border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--accent);
-
-  font-size: clamp(12px, 3.5vw, 14px);
-  line-height: 1;
-
-  cursor: pointer;
-  user-select: none;
-}
-
-button:active {
-  transform: scale(0.95);
-}
