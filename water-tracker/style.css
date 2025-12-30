@@ -21,19 +21,18 @@ body {
   padding: clamp(12px, 3vw, 16px);
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.15);
-  display: flex;
+   display: flex;
   flex-direction: column;
   align-items: center; /* ОЦЕ КЛЮЧ */
   gap: 10px;
 }
 
 .title {
-  font-size: 14px;
-  opacity: 0.8;
+  font-size: clamp(12px, 3vw, 14px);
 }
 
 .amount {
-  font-size: 14px;
+  font-size: clamp(13px, 3.5vw, 15px);
 }
 
 .glass {
@@ -79,8 +78,9 @@ body {
 }
 
 button {
-  width: 28px;
-  height: 28px;
+  width: clamp(26px, 6vw, 32px);
+  height: clamp(26px, 6vw, 32px);
+  font-size: clamp(14px, 4vw, 18px);
   border-radius: 50%;
   border: 1px solid var(--accent);
   background: transparent;
