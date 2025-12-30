@@ -16,15 +16,15 @@ body {
 
 .widget {
   width: 100%;
-  max-width: 320px;
-  min-width: 100px;
-  padding: clamp(12px, 3vw, 16px);
-  border-radius: 16px;
+  max-width: 220px;
+  min-width: 600px;
+  padding: clamp(6px, 3vw, 8px);
+  border-radius: 8px;
   border: 1px solid rgba(0,0,0,0.15);
    display: flex;
   flex-direction: column;
   align-items: center; /* ОЦЕ КЛЮЧ */
-  gap: 10px;
+  gap: 5px;
 }
 
 .title {
@@ -39,7 +39,7 @@ body {
   width: 100%;
   aspect-ratio: 3 / 4;
   max-height: 160px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--accent);
   overflow: hidden;
   position: relative;
@@ -60,14 +60,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; /* ЦЕНТР */
-  gap: 6px;
+  gap: 3px;
 }
 
 .row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   font-size: 12px;
 }
 
@@ -78,14 +78,14 @@ body {
 }
 
 button {
-  width: clamp(26px, 6vw, 32px);
-  height: clamp(26px, 6vw, 32px);
-  font-size: clamp(14px, 4vw, 18px);
+  width: clamp(13px, 3vw, 16px);
+  height: clamp(13px, 3vw, 16px);
+  font-size: clamp(7px, 2vw, 9px);
   border-radius: 50%;
   border: 1px solid var(--accent);
   background: transparent;
   color: var(--accent);
-  font-size: 16px;
+  font-size: 13px;
   cursor: pointer;
 }
 
