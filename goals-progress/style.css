@@ -38,13 +38,11 @@ html, body {
 .progress-bar {
   position: relative;
   width: 100%;
-
-  /* адаптивна висота */
   height: clamp(6px, 1.2vw, 12px);
-
   background: #e5e5e5;
   border-radius: 999px;
 }
+
 
 .progress-fill {
   position: absolute;
