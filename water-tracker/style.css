@@ -1,92 +1,126 @@
 :root {
   --accent: #0a3323;
+  --border: rgba(0, 0, 0, 0.15);
+  --bg: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --accent: #f7f4d5;
+    --border: rgba(255, 255, 255, 0.25);
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: system-ui, sans-serif;
+  background: transparent;
   color: var(--accent);
 }
 
+/* === ОСНОВНИЙ ВІДЖЕТ === */
 .widget {
   width: 100%;
-  max-width: 220px;
-  min-width: 600px;
-  padding: clamp(6px, 3vw, 8px);
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.15);
-   display: flex;
+  max-width: 360px;
+  min-width: 220px;
+
+  padding: 14px;
+
+  display: flex;
   flex-direction: column;
-  align-items: center; /* ОЦЕ КЛЮЧ */
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
 }
 
+/* === ТЕКСТ === */
 .title {
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: 14px;
+  opacity: 0.8;
+  text-align: center;
 }
 
 .amount {
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: 14px;
+  text-align: center;
 }
 
+#current {
+  font-weight: 600;
+}
+
+/* === СКЛЯНКА === */
 .glass {
   width: 100%;
+  max-width: 280px;
+
   aspect-ratio: 3 / 4;
-  max-height: 160px;
-  border-radius: 6px;
+  min-height: 120px;
+
+  border-radius: 12px;
   border: 1px solid var(--accent);
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
 .fill {
   position: absolute;
   bottom: 0;
+  left: 0;
+
   width: 100%;
   height: 0%;
+
   background: var(--accent);
   transition: height 0.3s ease;
 }
 
-/* КНОПКИ */
+/* === КНОПКИ === */
 .controls {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* ЦЕНТР */
-  gap: 3px;
+  align-items: center;
+  gap: 6px;
 }
 
 .row {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
+
   font-size: 12px;
 }
 
 .row span {
-  min-width: 50px;
+  min-width: 52px;
   text-align: center;
   opacity: 0.85;
 }
 
 button {
-  width: clamp(13px, 3vw, 16px);
-  height: clamp(13px, 3vw, 16px);
-  font-size: clamp(7px, 2vw, 9px);
+  width: 28px;
+  height: 28px;
+
   border-radius: 50%;
   border: 1px solid var(--accent);
   background: transparent;
   color: var(--accent);
-  font-size: 13px;
+
+  font-size: 16px;
+  line-height: 1;
+
   cursor: pointer;
+  user-select: none;
 }
 
 button:active {
