@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Віджет звичок</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Habit Progress</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="widget">
-        <div class="progress-circle">
-            <span id="percent">%</span>
-        </div>
-    </div>
+  <div id="widget">
+    <div id="stage">⏳</div>
+    <div id="label">Завантаження…</div>
+  </div>
 
-    <!-- Спочатку підключаємо fetchData.js, бо script.js його викликає -->
-    <script src="fetchData.js"></script>
-    <script src="script.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
