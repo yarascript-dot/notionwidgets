@@ -4,7 +4,11 @@ const current = document.getElementById("current");
 const bar = document.querySelector(".progress-bar");
 
 const max = 26;
+const STORAGE_KEY = "year_goals_progress";
+
 let isDragging = false;
+
+/* ---------- події ---------- */
 
 slider.addEventListener("mousedown", () => {
   isDragging = true;
@@ -28,15 +32,41 @@ document.addEventListener("mousemove", (e) => {
   update(value);
 });
 
+/* ---------- логіка ---------- */
+
 function update(value) {
-  const percent = (value / max) * 100;
+  const clamped = Math.max(0, Math.min(value, max));
+  const percent = (clamped / max) * 100;
+
   progressFill.style.width = `${percent}%`;
   slider.style.left = `${percent}%`;
-  current.textContent = value;
+  current.textContent = clamped;
+
+  save(clamped);
 }
+
+/* ---------- localStorage ---------- */
+
+function save(value) {
+  localStorage.setItem(STORAGE_KEY, value);
+}
+
+function load() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved !== null) {
+    update(Number(saved));
+  } else {
+    update(0);
+  }
+}
+
+/* ---------- ресайз ---------- */
 
 window.addEventListener("resize", () => {
   const value = Number(current.textContent);
   update(value);
 });
 
+/* ---------- старт ---------- */
+
+load();
