@@ -27,14 +27,14 @@ body {
 .widget {
   width: 100%;
   max-width: 360px;
-  min-width: 220px;
+  min-width: 110px; /* мінімальна ширина зменшена */
 
-  padding: 14px;
+  padding: clamp(10px, 3vw, 16px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: clamp(6px, 2vw, 12px);
 
   border-radius: 16px;
   border: 1px solid var(--border);
@@ -43,13 +43,13 @@ body {
 
 /* === ТЕКСТ === */
 .title {
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 14px);
   opacity: 0.8;
   text-align: center;
 }
 
 .amount {
-  font-size: 14px;
+  font-size: clamp(12px, 3.5vw, 14px);
   text-align: center;
 }
 
@@ -63,7 +63,7 @@ body {
   max-width: 280px;
 
   aspect-ratio: 3 / 4;
-  min-height: 120px;
+  min-height: 60px;
 
   border-radius: 12px;
   border: 1px solid var(--accent);
@@ -89,34 +89,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: clamp(4px, 1.5vw, 6px);
 }
 
 .row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: clamp(6px, 2vw, 10px);
 
-  font-size: 12px;
+  font-size: clamp(10px, 3vw, 12px);
 }
 
 .row span {
-  min-width: 52px;
+  min-width: 40px;
   text-align: center;
   opacity: 0.85;
 }
 
 button {
-  width: 28px;
-  height: 28px;
+  width: clamp(24px, 6vw, 28px);
+  height: clamp(24px, 6vw, 28px);
 
   border-radius: 50%;
   border: 1px solid var(--accent);
   background: transparent;
   color: var(--accent);
 
-  font-size: 16px;
+  font-size: clamp(14px, 4vw, 16px);
   line-height: 1;
 
   cursor: pointer;
