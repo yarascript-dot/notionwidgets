@@ -22,11 +22,14 @@ document.addEventListener("mousemove", (e) => {
   if (!isDragging) return;
 
   const rect = bar.getBoundingClientRect();
+  const sliderWidth = slider.offsetWidth;
+  const radius = sliderWidth / 2;
+
   let x = e.clientX - rect.left;
 
-  x = Math.max(0, Math.min(x, rect.width));
+  x = Math.max(radius, Math.min(x, rect.width - radius));
 
-  const percent = x / rect.width;
+  const percent = (x - radius) / (rect.width - sliderWidth);
   const value = Math.round(percent * max);
 
   update(value);
@@ -36,14 +39,19 @@ document.addEventListener("mousemove", (e) => {
 
 function update(value) {
   const clamped = Math.max(0, Math.min(value, max));
-  const percent = (clamped / max) * 100;
+  const percent = clamped / max;
 
-  progressFill.style.width = `${percent}%`;
-  slider.style.left = `${percent}%`;
+  const sliderWidth = slider.offsetWidth;
+  const barWidth = bar.offsetWidth;
+  const x = percent * (barWidth - sliderWidth) + sliderWidth / 2;
+
+  progressFill.style.width = `${percent * 100}%`;
+  slider.style.left = `${x}px`;
   current.textContent = clamped;
 
   save(clamped);
 }
+
 
 /* ---------- localStorage ---------- */
 
