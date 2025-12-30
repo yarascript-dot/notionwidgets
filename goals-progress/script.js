@@ -34,3 +34,9 @@ function update(value) {
   slider.style.left = `${percent}%`;
   current.textContent = value;
 }
+
+window.addEventListener("resize", () => {
+  const value = Number(current.textContent);
+  update(value);
+});
+
